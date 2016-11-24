@@ -37,3 +37,22 @@ actions:
       direction: 'older'
       unit: 'days'
       unit_count: 365
+  3:
+      action: 'delete_indices'
+      description: |
+        Delete all indices whose name starts with 'syslog-' and that have
+        been created more than 30 days ago.
+      options:
+        continue_if_exception: False
+        disable_action: False
+        ignore_empty_list: True
+      filters:
+      - filtertype: 'pattern'
+        kind: 'prefix'
+        value: 'syslog-'
+      - filtertype: 'age'
+        source: 'name'
+        timestring: '%Y.%m.%d'
+        direction: 'older'
+        unit: 'days'
+        unit_count: 30

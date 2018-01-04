@@ -1,7 +1,7 @@
-FROM alpine:3.4
+FROM alpine:3.7
 
 RUN apk --no-cache add python py-pip \
-    && pip install elasticsearch-curator==4.0.0
+    && pip install elasticsearch-curator==5.4.1
 
 STOPSIGNAL SIGKILL
 COPY ./files /
